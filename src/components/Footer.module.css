@@ -1,0 +1,84 @@
+.footer {
+  background: var(--bv-bg-inverse);
+  color: var(--bv-text-on-inverse);
+  padding: 40px 84px 16px;
+}
+
+@media (max-width: 900px) {
+  .footer { padding: 32px 24px 16px; }
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  max-width: 240px;
+}
+
+.logo {
+  font-family: "Cooper Black", "IBM Plex Mono", monospace;
+  font-size: 20px;
+  line-height: 1.05;
+}
+
+.tagline {
+  font-size: 14px;
+  opacity: 0.68;
+}
+
+.cols {
+  display: flex;
+  gap: 48px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.colTitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bv-decor-brass);
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  opacity: 0.68;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--bv-border-default);
+  opacity: 0.12;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  font-size: 12px;
+}
+
+.bottom span { opacity: 0.62; }
+
+.legal {
+  display: flex;
+  gap: 12px;
+}

@@ -1,0 +1,85 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getPlaces, getPlace } from "@/lib/content";
+import { CategoryPill, VerdictPill } from "@/components/Badges";
+
+export async function generateStaticParams() {
+  const places = await getPlaces();
+  return places.map((p) => ({ slug: p.slug }));
+}
+
+export default async function PlacePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const place = await getPlace(slug);
+  if (!place) notFound();
+
+  const gallery = place.gallery?.length ? place.gallery : place.heroImage ? [place.heroImage] : [];
+
+  return (
+    <div className="wrap" style={{ paddingTop: 24, paddingBottom: 64 }}>
+      <Link
+        href={`/city/${place.citySlug}`}
+        style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--bv-text-tertiary)", marginBottom: 24 }}
+      >
+        ← Back to {place.city}
+      </Link>
+
+      <div style={{ display: "grid", gridTemplateColumns: "516px 1fr", gap: 48 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {gallery.length > 0 ? (
+            gallery.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={i} src={src} alt={`${place.name} photo ${i + 1}`} style={{ width: "100%", borderRadius: 6, objectFit: "cover" }} />
+            ))
+          ) : (
+            <div style={{ aspectRatio: "516/485", background: "var(--bv-bg-wash)", borderRadius: 6 }} />
+          )}
+        </div>
+
+        <div>
+          <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+            <CategoryPill type={place.category} />
+            {place.verdict && <VerdictPill choice={place.verdict} />}
+          </div>
+          <h1 style={{ fontSize: 34, marginBottom: 12 }}>{place.name}</h1>
+          <p style={{ fontSize: 15, color: "var(--bv-text-secondary)", lineHeight: 1.6, marginBottom: 24 }}>{place.take}</p>
+
+          {place.facts && place.facts.length > 0 && (
+            <div style={{ marginBottom: 32 }}>
+              {place.facts.map((fact) => (
+                <div
+                  key={fact.label}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 24,
+                    padding: "13px 0",
+                    borderBottom: "1px solid var(--bv-border-subtle)",
+                    fontSize: 13,
+                  }}
+                >
+                  <span style={{ color: "var(--bv-text-tertiary)", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", fontSize: 11 }}>
+                    {fact.label}
+                  </span>
+                  <span style={{ fontWeight: 600, textAlign: "right" }}>{fact.value}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {place.body?.map((para, i) => (
+            <p key={i} style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)", marginBottom: 16 }}>
+              {para}
+            </p>
+          ))}
+          {place.skipItIf && (
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)" }}>
+              <strong style={{ color: "var(--bv-text-primary)" }}>Skip it if: </strong>
+              {place.skipItIf.replace(/^Skip it if:\s*/i, "")}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

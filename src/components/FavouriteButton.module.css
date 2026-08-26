@@ -1,0 +1,108 @@
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 100px;
+  background: var(--bv-bg-raised);
+  color: var(--bv-text-tertiary);
+  padding: 0;
+  box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18);
+  transition: color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  color: var(--bv-category-dine-accent);
+  transform: scale(1.06);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--bv-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn.active {
+  color: var(--bv-category-dine-accent);
+}
+
+.heart {
+  position: relative;
+  z-index: 1;
+}
+
+/* Adding — the bounce */
+.btn.bursting .heart {
+  animation: bv-heart-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn.bursting {
+  animation: bv-ring-pulse 0.5s ease-out;
+}
+
+/* Removing — calmer, no burst, just a soft settle */
+.btn.active:not(.bursting) .heart {
+  animation: bv-heart-settle 0.22s ease-out;
+}
+
+@keyframes bv-heart-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.45); }
+  50% { transform: scale(0.82); }
+  72% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bv-heart-settle {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.82); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bv-ring-pulse {
+  0% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 0 rgba(166, 73, 38, 0.45); }
+  100% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 14px rgba(166, 73, 38, 0); }
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--bv-category-dine-accent);
+  opacity: 0;
+  animation: bv-particle-burst 0.6s ease-out forwards;
+  transform: rotate(var(--angle)) translate(0, 0);
+}
+
+.particle:nth-child(odd) {
+  background: var(--bv-decor-brass);
+  width: 4px;
+  height: 4px;
+}
+
+@keyframes bv-particle-burst {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--angle)) translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translate(0, -22px) scale(0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .heart, .btn.bursting, .btn.bursting .heart, .particle {
+    animation: none !important;
+  }
+}
