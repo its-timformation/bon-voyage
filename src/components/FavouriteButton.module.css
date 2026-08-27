@@ -13,7 +13,7 @@
 }
 
 .btn:hover {
-  color: var(--bv-status-critical);
+  color: var(--bv-category-dine-accent);
   transform: scale(1.06);
 }
 
@@ -22,10 +22,8 @@
   outline-offset: 2px;
 }
 
-/* Figma's active heart is a clear red, not the burnt-orange Dine accent —
-   bv-status-critical is the closest existing token to that red. */
 .btn.active {
-  color: var(--bv-status-critical);
+  color: var(--bv-category-dine-accent);
 }
 
 .heart {
@@ -62,8 +60,8 @@
 }
 
 @keyframes bv-ring-pulse {
-  0% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 0 rgba(154, 59, 59, 0.45); }
-  100% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 14px rgba(154, 59, 59, 0); }
+  0% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 0 rgba(166, 73, 38, 0.45); }
+  100% { box-shadow: 0 1px 2px rgba(22, 38, 25, 0.18), 0 0 0 14px rgba(166, 73, 38, 0); }
 }
 
 .particles {
@@ -80,7 +78,7 @@
   height: 5px;
   margin: -2.5px 0 0 -2.5px;
   border-radius: 50%;
-  background: var(--bv-status-critical);
+  background: var(--bv-category-dine-accent);
   opacity: 0;
   animation: bv-particle-burst 0.6s ease-out forwards;
   transform: rotate(var(--angle)) translate(0, 0);

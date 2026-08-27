@@ -1,8 +1,7 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlaces, getPlace } from "@/lib/content";
 import { CategoryPill, VerdictPill } from "@/components/Badges";
-import { PlaceGallery } from "@/components/PlaceGallery";
-import { BackLink } from "@/components/BackLink";
 
 export async function generateStaticParams() {
   const places = await getPlaces();
@@ -18,10 +17,24 @@ export default async function PlacePage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="wrap" style={{ paddingTop: 24, paddingBottom: 64 }}>
-      <BackLink fallbackHref={`/city/${place.citySlug}`} fallbackLabel={`Back to ${place.city}`} />
+      <Link
+        href={`/city/${place.citySlug}`}
+        style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--bv-text-tertiary)", marginBottom: 24 }}
+      >
+        ← Back to {place.city}
+      </Link>
 
       <div style={{ display: "grid", gridTemplateColumns: "516px 1fr", gap: 48 }}>
-        <PlaceGallery images={gallery} alt={place.name} slug={place.slug} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {gallery.length > 0 ? (
+            gallery.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={i} src={src} alt={`${place.name} photo ${i + 1}`} style={{ width: "100%", borderRadius: 6, objectFit: "cover" }} />
+            ))
+          ) : (
+            <div style={{ aspectRatio: "516/485", background: "var(--bv-bg-wash)", borderRadius: 6 }} />
+          )}
+        </div>
 
         <div>
           <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
@@ -55,12 +68,12 @@ export default async function PlacePage({ params }: { params: Promise<{ slug: st
           )}
 
           {place.body?.map((para, i) => (
-            <p key={i} style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)", marginBottom: 16, maxWidth: 516 }}>
+            <p key={i} style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)", marginBottom: 16 }}>
               {para}
             </p>
           ))}
           {place.skipItIf && (
-            <p style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)", maxWidth: 516 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: "var(--bv-text-secondary)" }}>
               <strong style={{ color: "var(--bv-text-primary)" }}>Skip it if: </strong>
               {place.skipItIf.replace(/^Skip it if:\s*/i, "")}
             </p>

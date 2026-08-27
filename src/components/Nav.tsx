@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Nav.module.css";
-import { Logo } from "./Logo";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -23,19 +22,13 @@ export function Nav() {
   return (
     <nav className={styles.bar}>
       <Link href="/" className={styles.logo}>
-        <Logo variant="light" />
+        <span>bon</span>
+        <span className={styles.logoMark}>✈</span>
+        <span>voyage</span>
       </Link>
       <div className={styles.links}>
         {LINKS.map((link) => {
-          // "Cities" also stays current on a city or place page — those routes
-          // (/city/*, /place/*) live under the Cities section but don't start
-          // with "/cities" as a string, so they need an explicit check.
-          const current =
-            link.href === "/"
-              ? pathname === "/"
-              : link.href === "/cities"
-              ? pathname === "/cities" || pathname.startsWith("/city/") || pathname.startsWith("/place/")
-              : pathname.startsWith(link.href);
+          const current = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
           return (
             <Link key={link.href} href={link.href} className={`${styles.item} ${current ? styles.current : ""}`}>
               {link.label}

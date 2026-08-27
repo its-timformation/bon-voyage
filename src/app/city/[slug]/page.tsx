@@ -17,20 +17,12 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
 
   return (
     <div>
-      <div style={{ position: "relative", height: 190, margin: "0 60px", marginTop: 24, borderRadius: 8, overflow: "hidden" }}>
+      <div style={{ position: "relative", height: 190, margin: "0 84px", marginTop: 24, borderRadius: 8, overflow: "hidden" }}>
         {city.heroImage && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={city.heroImage}
-            alt=""
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(100%)" }}
-          />
+          <img src={city.heroImage} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         )}
-        {/* Duotone approximation — Figma's hero band uses a pre-toned source
-            image we can't download; grayscale + a multiply overlay in the
-            brand green gets the same two-tone treatment from the real photo. */}
-        <div style={{ position: "absolute", inset: 0, background: "var(--bv-green-deep)", mixBlendMode: "multiply", opacity: 0.7 }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(13,12,10,0) 45%, rgba(13,12,10,0.4) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(25,47,29,0.35)" }} />
       </div>
 
       <div className="wrap" style={{ paddingTop: 24 }}>
