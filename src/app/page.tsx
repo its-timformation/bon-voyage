@@ -9,7 +9,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="wrap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, paddingTop: 64, paddingBottom: 64, alignItems: "center" }}>
+      <section className="wrap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, paddingTop: 0, paddingBottom: 64, alignItems: "center" }}>
         <div>
           <p className="eyebrow" style={{ marginBottom: 12 }}>Considered, not curated for a photo</p>
           <h1 style={{ fontSize: 40, lineHeight: 1.1, marginBottom: 16 }}>Dishing out the authentic advice</h1>
