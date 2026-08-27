@@ -1,5 +1,5 @@
 import { getCities } from "@/lib/content";
-import { CityTeaser } from "@/components/CityTeaser";
+import { CityIndexTeaser } from "@/components/CityIndexTeaser";
 
 export default async function CitiesIndexPage() {
   const cities = await getCities();
@@ -9,7 +9,7 @@ export default async function CitiesIndexPage() {
       <h1 style={{ fontSize: 34, marginBottom: 32 }}>The Collection</h1>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
         {cities.map((city, i) => (
-          <CityTeaser key={city.slug} city={city} index={i} />
+          <CityIndexTeaser key={city.slug} city={city} index={i} />
         ))}
       </div>
     </div>

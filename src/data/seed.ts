@@ -4,6 +4,9 @@ import { City, Place, JournalPost, Route } from "@/lib/types";
 // the site builds from when no Notion integration is configured, and it is also
 // what a fresh clone of this repo runs on out of the box with zero setup.
 
+// Order matches the real Figma Home frame's "Latest Cities" teaser group
+// (No.01 Belfast, No.02 London, No.03 Toronto, No.04 Nashville) — not
+// alphabetical, not by place count, just what the design has.
 export const cities: City[] = [
   {
     slug: "belfast",
@@ -16,6 +19,27 @@ export const cities: City[] = [
       "Northern Ireland's capital, and compact — about 340,000 people, with most of the centre crossable on foot in twenty minutes. It divides into quarters: Cathedral for bars and live music, Queen's for the university, the Botanic Gardens and the Ulster Museum, Titanic for the shipyard, the museum and the two yellow cranes visible from most of the city. Cave Hill rises to the north, about forty minutes up for the view back over the lough. The city airport is ten minutes from the centre, and the Causeway Coast is a comfortable day trip.",
   },
   {
+    slug: "london",
+    name: "London",
+    placeCount: 68,
+    updated: "Aug 2026",
+    // Figma's exact line is "bits worth the tube fare" — ours had drifted to "hits".
+    teaserLine: 'Too big to "do". These are the bits worth the tube fare.',
+    heroImage: "/images/london_jrnl.jpg",
+    description:
+      "Nine million people across thirty-two boroughs. The tube is zoned and priced by zone, contactless caps automatically each day, and adjacent neighbourhoods are often quicker on foot than underground. The national museums are free — the British Museum, the V&A, the Natural History, both Tates — and the parks are built for breaking up a day: Hyde, Regent's, Hampstead Heath, Richmond with its deer. Sixty-eight places, concentrated in the centre and the east: Soho, Shoreditch, Hackney, Peckham.",
+  },
+  {
+    slug: "toronto",
+    name: "Toronto",
+    placeCount: 41,
+    updated: "Aug 2026",
+    teaserLine: "Six cities in a trench coat.",
+    heroImage: "/images/toronto_jrnl.jpg",
+    description:
+      "Canada's largest city, around three million in the city proper and six across the region, and one of the most immigrant-shaped places anywhere — close to half the population was born outside the country, hence the food is the main event. It runs on a grid, and the streetcars along King, Queen, Dundas and College are the practical way across it. Kensington Market, Chinatown and Dundas West sit west of downtown, Leslieville and Riverside east. Summer brings patios and the island ferries; winter moves indoors through the PATH, thirty kilometres of walkway under the core.",
+  },
+  {
     slug: "nashville",
     name: "Nashville",
     placeCount: 37,
@@ -24,24 +48,6 @@ export const cities: City[] = [
     heroImage: "/images/nashville_hero.jpg",
     description:
       "Tennessee's capital, about 690,000 people, laid out wide enough that a car or a rideshare makes sense for most of it. Downtown means Broadway — live music from late morning, no cover, every door open. The Ryman Auditorium is a block away, the Grand Ole Opry sits out at Opryland, and the Station Inn and the Bluebird are the small listening rooms where writers try new material. Food is meat-and-threes and hot chicken. East Nashville, Germantown and 12South hold most of the thirty-seven places.",
-  },
-  {
-    slug: "toronto",
-    name: "Toronto",
-    placeCount: 41,
-    updated: "Aug 2026",
-    teaserLine: "Six cities in a trench coat.",
-    description:
-      "Canada's largest city, around three million in the city proper and six across the region, and one of the most immigrant-shaped places anywhere — close to half the population was born outside the country, hence the food is the main event. It runs on a grid, and the streetcars along King, Queen, Dundas and College are the practical way across it. Kensington Market, Chinatown and Dundas West sit west of downtown, Leslieville and Riverside east. Summer brings patios and the island ferries; winter moves indoors through the PATH, thirty kilometres of walkway under the core.",
-  },
-  {
-    slug: "london",
-    name: "London",
-    placeCount: 68,
-    updated: "Aug 2026",
-    teaserLine: 'Too big to "do". These are the hits worth the tube fare.',
-    description:
-      "Nine million people across thirty-two boroughs. The tube is zoned and priced by zone, contactless caps automatically each day, and adjacent neighbourhoods are often quicker on foot than underground. The national museums are free — the British Museum, the V&A, the Natural History, both Tates — and the parks are built for breaking up a day: Hyde, Regent's, Hampstead Heath, Richmond with its deer. Sixty-eight places, concentrated in the centre and the east: Soho, Shoreditch, Hackney, Peckham.",
   },
 ];
 

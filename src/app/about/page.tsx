@@ -11,11 +11,41 @@ export default function AboutPage() {
           Everything is highly recommended or experienced before being researched and added. No sponsorships, no pay-to-list — we&rsquo;d rather send you somewhere ordinary and excellent than famous and average. This isn&rsquo;t a &ldquo;best of&rdquo; list, but rather a guide to where you actually need to go. Don&rsquo;t expect Michelin stars and velvet ropes, but more likely neighbourhood haunts and places with actual soul.
         </p>
       </div>
-      <div style={{ display: "grid", gap: 16 }}>
+      {/* Figma's About hero (mask group 1259:4570) is a diagonal two-photo
+          overlap, not a plain stacked grid — a large photo with a second,
+          smaller one peeking out from behind/below it at an offset. */}
+      <div style={{ position: "relative", height: 460 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/belfast_warm_hero.jpg" alt="" style={{ borderRadius: 8, width: "100%", objectFit: "cover", aspectRatio: "624/450" }} />
+        <img
+          src="/images/belfast_warm_hero.jpg"
+          alt=""
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "76%",
+            height: "80%",
+            objectFit: "cover",
+            borderRadius: 8,
+            boxShadow: "0 16px 32px rgba(13,12,10,0.22)",
+          }}
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/the-parthenon.jpg" alt="" style={{ borderRadius: 8, width: "100%", objectFit: "cover", aspectRatio: "624/300" }} />
+        <img
+          src="/images/the-parthenon.jpg"
+          alt=""
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            width: "52%",
+            height: "46%",
+            objectFit: "cover",
+            borderRadius: 8,
+            border: "6px solid var(--bv-bg-page)",
+            boxShadow: "0 16px 32px rgba(13,12,10,0.26)",
+          }}
+        />
       </div>
     </div>
   );

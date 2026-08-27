@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import { cities } from "@/data/seed";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
         <div className={styles.brand}>
-          <div className={styles.logo}>bon<br />voyage</div>
+          <Logo variant="dark" />
           <p className={styles.tagline}>Getting you the local recommendation, before you have to ask</p>
         </div>
         <div className={styles.cols}>

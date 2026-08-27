@@ -11,30 +11,7 @@
 }
 
 .logo {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
-  font-family: "Cooper Black", "IBM Plex Mono", monospace;
-  font-size: 20px;
-  color: var(--bv-text-primary);
-  width: fit-content;
-}
-
-.logoMark {
-  position: absolute;
-  top: -6px;
-  left: 34px;
   display: inline-flex;
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  background: var(--bv-action-primary);
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 9px;
-  transform: rotate(-8deg);
 }
 
 .links {
